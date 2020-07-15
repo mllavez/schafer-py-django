@@ -12,6 +12,18 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+# import sentry_sdk
+# from sentry_sdk.integrations.django import DjangoIntegration
+
+# sentry_sdk.init(
+#     dsn="https://f53e275259234a8fa27c92f93988bfd5@o320257.ingest.sentry.io/5324491",
+#     integrations=[DjangoIntegration()],
+
+#     # If you wish to associate users to errors (assuming you are using
+#     # django.contrib.auth) you may enable sending PII data.
+#     send_default_pii=True
+# )
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,8 +43,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
+    'courses.apps.CoursesConfig',
+    'videos.apps.VideosConfig',
+    'blog.apps.BlogConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +55,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+AUTH_USER_MODEL = 'users.Profile'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
